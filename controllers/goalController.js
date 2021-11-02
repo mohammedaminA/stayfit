@@ -56,5 +56,24 @@ exports.addGoal = async (req, res) => {
 };
 
 //IMPLEMENT updateGOAL
+exports.updateGoal = async (req, res) => {
+  try {
+    const goal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    res.status(204).json({
+      status: "successfully updated",
+      data: {
+        goal,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "failed. please check message below",
+      message: err,
+    });
+  }
+};
 
 //IMPLEMENT deleteGoal
