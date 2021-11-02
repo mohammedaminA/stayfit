@@ -1,13 +1,13 @@
 {
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^6.0.12",
     "nodemon": "^2.0.14"
   },
   "name": "stayfit",
   "version": "1.0.0",
   "description": "a web app which tracks and manages your workout goals",
   "main": "app.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
