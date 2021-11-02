@@ -1,3 +1,4 @@
+const res = require("express/lib/response");
 const Goal = require("../models/goalModel");
 
 //IMPLEMENT GET ALL GOALS
@@ -77,3 +78,18 @@ exports.updateGoal = async (req, res) => {
 };
 
 //IMPLEMENT deleteGoal
+
+exports.deleteGoal = async (req, res) => {
+  try {
+    const goal = await Goal.findByIdAndDelete(req.params.id);
+    res.status(204).json({
+      status: "success",
+      data: null,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err,
+    });
+  }
+};
