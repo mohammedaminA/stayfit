@@ -47,7 +47,12 @@ exports.addGoal = async (req, res) => {
         newGoal,
       },
     });
-  } catch (err) {}
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err,
+    });
+  }
 };
 
 //IMPLEMENT updateGOAL
