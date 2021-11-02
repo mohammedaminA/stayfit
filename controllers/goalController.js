@@ -38,6 +38,18 @@ exports.getGoals = async (req, res) => {
 
 //IMPLEMENT ADD A GOAL
 
+exports.addGoal = async (req, res) => {
+  try {
+    const newGoal = await Goal.create(req.body);
+    res.status(201).json({
+      status: "success",
+      data: {
+        newGoal,
+      },
+    });
+  } catch (err) {}
+};
+
 //IMPLEMENT updateGOAL
 
 //IMPLEMENT deleteGoal
