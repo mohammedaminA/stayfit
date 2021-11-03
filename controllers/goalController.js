@@ -2,9 +2,9 @@ const res = require("express/lib/response");
 const Goal = require("../models/goalModel");
 
 //IMPLEMENT GET ALL GOALS
-exports.getGoals = async (req, res) => {
+exports.getAllGoals = async (req, res) => {
   try {
-    const goals = Goal.find();
+    const goals = await Goal.find();
     res.status(200).json({
       status: "success",
       data: {
@@ -20,9 +20,9 @@ exports.getGoals = async (req, res) => {
 };
 
 //IMPLEMENT GET A GOAL
-exports.getGoals = async (req, res) => {
+exports.getGoal = async (req, res) => {
   try {
-    const goal = Goal.findById(req.params.id);
+    const goal = await Goal.findById(req.params.id);
     res.status(200).json({
       status: "success",
       data: {
@@ -45,7 +45,7 @@ exports.addGoal = async (req, res) => {
     res.status(201).json({
       status: "success",
       data: {
-        newGoal,
+        goal: newGoal,
       },
     });
   } catch (err) {

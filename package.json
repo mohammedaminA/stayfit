@@ -10,7 +10,7 @@
   "description": "a web app which tracks and manages your workout goals",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",

@@ -9,11 +9,11 @@ const goalSchema = new mongoose.Schema({
   },
   dueDate: {
     type: Date,
-    required: [true, "A tour must have a duration"],
+    // required: [true, "A tour must have a duration"],
   },
   difficulty: {
     type: String,
-    required: [true, "A tour must have a difficulty"],
+    required: [true, "A goal must have a difficulty"],
   },
   description: {
     type: String,
