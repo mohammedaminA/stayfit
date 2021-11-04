@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const goalSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -19,7 +18,7 @@ const goalSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  achievements: [String],
+  achievements: [String, { type: String }],
   createdAt: {
     type: Date,
     default: Date.now(),

@@ -75,6 +75,7 @@ exports.updateGoal = async (req, res) => {
   }
 };
 
+//implement route Aliasing on goals
 //IMPLEMENT deleteGoal
 
 exports.deleteGoal = async (req, res) => {
