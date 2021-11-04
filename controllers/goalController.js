@@ -59,19 +59,17 @@ exports.addGoal = async (req, res) => {
 //IMPLEMENT updateGOAL
 exports.updateGoal = async (req, res) => {
   try {
-    const goal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
+    const goal = await Goal.findByIdAndUpdate(req.params.id, req.params.body, {
       runValidators: true,
+      new: true,
     });
-    res.status(204).json({
-      status: "successfully updated",
-      data: {
-        goal,
-      },
+    res.status(201).json({
+      status: "succesfully updated",
+      data: goal,
     });
   } catch (err) {
-    res.status(400).json({
-      status: "failed. please check message below",
+    res.status(204).json({
+      status: "fail",
       message: err,
     });
   }
