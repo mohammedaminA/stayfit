@@ -21,6 +21,4 @@ const port = process.env.PORT;
 
 app.listen(port, () => {
   console.log(`app running on port ${port}`);
-  console.log(process.env.DATABASE);
-  console.log(process.env.DATABASE_PASSWORD);
 });

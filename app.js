@@ -10,3 +10,10 @@ app.use("/api/v1/goals", goalRouter);
 // app.use("/api/v1/users", userRouter);
 
 module.exports = app;
+
+app.all("*", (req, res, next) => {
+  res.status(404).json({
+    status: "fail",
+    message: `Can't find ${req.originalUrl}`,
+  });
+});
