@@ -17,11 +17,18 @@ exports.createUser = (req, res) => {
     status: "error",
     message: "This route is not defined for now, Sorry!",
   });
+};
 
-  exports.updateUser = (req, res) => {
-    res.status(500).json({
-      status: "error",
-      message: "This route is not defined for now, Sorry!",
-    });
-  };
+exports.updateUser = (req, res) => {
+  res.status(500).json({
+    status: "error",
+    message: "This route is not defined for now, Sorry!",
+  });
+};
+
+exports.deleteUser = (req, res) => {
+  res.status(500).json({
+    status: "error",
+    message: "This route is not defined for now, Sorry!",
+  });
 };

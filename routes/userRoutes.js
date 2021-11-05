@@ -1,10 +1,20 @@
-// const express = require("express");
-// const goalController = require("./../controllers/userController");
-// const router = express.Router();
+const express = require("express");
+const userController = require("./../controllers/userController");
+const authController = require("./../controllers/authController");
 
-// router.route("/").get(goalController.getGoals).post(goalController.addGoals);
-// router
-//   .route("/:id")
-//   .get(goalController.getGoal)
-//   .patch(goalController.updateGoal)
-//   .delete(goalController.deleteGoal);
+const router = express.Router();
+
+router.post("/signup", authController.signUp);
+
+router
+  .route("/")
+  .get(userController.getAllUsers)
+  .post(userController.createUser);
+
+router
+  .route("/:id")
+  .get(userController.getUser)
+  .patch(userController.updateUser)
+  .delete(userController.deleteUser);
+
+module.exports = router;
