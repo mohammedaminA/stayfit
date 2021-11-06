@@ -4,6 +4,13 @@ const goalRouter = require("./routes/goalRoutes");
 const userRouter = require("./routes/userRoutes");
 const app = express();
 
+app.set("view engine", "pug");
+app.set("views", "./views");
+
+app.get("/login", (req, res) => {
+  res.status(200).render("login");
+});
+
 app.use(express.json());
 
 app.use("/api/v1/goals", goalRouter);
