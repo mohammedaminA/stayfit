@@ -1,5 +1,4 @@
 const express = require("express");
-const { status } = require("express/lib/response");
 const goalRouter = require("./routes/goalRoutes");
 const userRouter = require("./routes/userRoutes");
 const app = express();

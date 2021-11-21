@@ -1,4 +1,3 @@
-const res = require("express/lib/response");
 const Goal = require("../models/goalModel");
 
 //IMPLEMENT GET ALL GOALS
@@ -76,7 +75,6 @@ exports.updateGoal = async (req, res) => {
 };
 
 //implement route Aliasing on goals
-//IMPLEMENT deleteGoal
 
 exports.deleteGoal = async (req, res) => {
   try {

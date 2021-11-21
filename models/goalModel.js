@@ -8,7 +8,6 @@ const goalSchema = new mongoose.Schema({
   },
   dueDate: {
     type: Date,
-    // required: [true, "A tour must have a duration"],
   },
   difficulty: {
     type: String,
