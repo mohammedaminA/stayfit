@@ -1,23 +1,12 @@
 const mongoose = require("mongoose");
 const goalSchema = new mongoose.Schema({
-  name: {
+  user_id: {
     type: String,
-    required: [true, "A name is required for all goals"],
-    unique: true,
-    trim: true,
+    required: [true, "User Id is required for all goals"],
   },
-  dueDate: {
-    type: Date,
-  },
-  difficulty: {
+  goals: {
     type: String,
-    required: [true, "A goal must have a difficulty"],
   },
-  description: {
-    type: String,
-    trim: true,
-  },
-  achievements: [String, { type: String }],
   createdAt: {
     type: Date,
     default: Date.now(),
