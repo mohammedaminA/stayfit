@@ -4,13 +4,19 @@ const userRouter = require("./routes/userRoutes");
 const app = express();
 const cors = require("cors");
 const morgan = require("morgan");
-
-// app.set("view engine", "pug");
-// app.set("views", "./views");
+const rateLimit = require("express-rate-limit");
 
 app.get("/login", (req, res) => {
   res.status(200).render("login");
 });
+
+const limiter = rateLimit({
+  max: 50,
+  windowMs: 60 * 60 * 1000,
+  message: "Too many requests, please try again in an hour!",
+});
+
+app.use("/api", limiter);
 
 app.use(express.json());
 app.use(cors());
