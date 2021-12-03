@@ -5,10 +5,13 @@ const app = express();
 const cors = require("cors");
 const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
+const helmet = require("helmet");
 
 app.get("/login", (req, res) => {
   res.status(200).render("login");
 });
+
+app.use(helmet());
 
 const limiter = rateLimit({
   max: 50,
@@ -18,7 +21,7 @@ const limiter = rateLimit({
 
 app.use("/api", limiter);
 
-app.use(express.json());
+app.use(express.json({ limit: "10kb" }));
 app.use(cors());
 app.use(morgan("dev"));
 
