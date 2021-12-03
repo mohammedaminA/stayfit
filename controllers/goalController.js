@@ -21,7 +21,7 @@ exports.getAllGoals = async (req, res) => {
 //IMPLEMENT GET A GOAL
 exports.getGoal = async (req, res) => {
   try {
-    const goal = await Goal.findById(req.params.id);
+    const goal = await Goal.find({ user_id: req.params.id });
     res.status(200).json({
       status: "success",
       data: {
@@ -37,21 +37,37 @@ exports.getGoal = async (req, res) => {
 };
 
 //IMPLEMENT ADD A GOAL
-
 exports.addGoal = async (req, res) => {
   try {
-    const newGoal = await Goal.create(req.body);
-    res.status(201).json({
-      status: "success",
-      data: {
-        goal: newGoal,
-      },
-    });
+    const goal = await Goal.findOne({ user_id: req.body.user_id });
+    if (goal == null) {
+      // const newGoal = await Goal.create({user_id: req.body.user_id, goals: req.body.goals});
+      const goal = new Goal(req.body);
+      const newGoal = await goal.save();
+      res.status(201).json({
+        status: "success",
+        data: {
+          goal: newGoal,
+        },
+      });
+    } else {
+      const newGoal = await Goal.updateOne(
+        { user_id: req.body.user_id },
+        req.body
+      );
+      res.status(201).json({
+        status: "success",
+        data: {
+          goal: newGoal,
+        },
+      });
+    }
   } catch (err) {
-    res.status(400).json({
+    res.status(500).json({
       status: "fail",
       message: err,
     });
+    console.log(err);
   }
 };
 
