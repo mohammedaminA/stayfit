@@ -6,6 +6,8 @@ const cors = require("cors");
 const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize");
+const xss = require("xss-clean");
 
 app.get("/login", (req, res) => {
   res.status(200).render("login");
@@ -22,6 +24,9 @@ const limiter = rateLimit({
 app.use("/api", limiter);
 
 app.use(express.json({ limit: "10kb" }));
+
+app.use(mongoSanitize());
+
 app.use(cors());
 app.use(morgan("dev"));
 
