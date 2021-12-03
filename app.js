@@ -2,15 +2,19 @@ const express = require("express");
 const goalRouter = require("./routes/goalRoutes");
 const userRouter = require("./routes/userRoutes");
 const app = express();
+const cors = require("cors");
+const morgan = require("morgan");
 
-app.set("view engine", "pug");
-app.set("views", "./views");
+// app.set("view engine", "pug");
+// app.set("views", "./views");
 
 app.get("/login", (req, res) => {
   res.status(200).render("login");
 });
 
 app.use(express.json());
+app.use(cors());
+app.use(morgan("dev"));
 
 app.use("/api/v1/goals", goalRouter);
 app.use("/api/v1/users", userRouter);
