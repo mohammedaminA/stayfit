@@ -27,6 +27,8 @@ app.use(express.json({ limit: "10kb" }));
 
 app.use(mongoSanitize());
 
+app.use(xss());
+
 app.use(cors());
 app.use(morgan("dev"));
 
