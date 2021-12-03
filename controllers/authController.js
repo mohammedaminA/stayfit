@@ -17,7 +17,7 @@ exports.signUp = async (req, res, next) => {
     });
     const token = signToken(newUser._id);
 
-    res.status(201).json({
+    res.status(200).json({
       status: "success",
       token,
       data: {
@@ -25,10 +25,18 @@ exports.signUp = async (req, res, next) => {
       },
     });
   } catch (err) {
-    res.status(400).json({
-      status: "fail",
-      message: err,
-    });
+    if (err.code == "11000") {
+      res.status(200).json({
+        status: "fail",
+        message: "Email is Already Exists",
+      });
+    } else {
+      res.status(200).json({
+        status: "fail",
+        message: err,
+      });
+    }
+    console.log(err);
   }
 };
 
@@ -45,7 +53,7 @@ exports.login = async (req, res, next) => {
   const user = await User.findOne({ email }).select("+password");
 
   if (!user || !(await user.checkPassword(password, user.password))) {
-    return res.status(401).json({
+    return res.status(200).json({
       status: "fail",
       message: "invalid email or password",
     });
@@ -55,5 +63,8 @@ exports.login = async (req, res, next) => {
   res.status(200).json({
     status: "success",
     token,
+    data: {
+      user,
+    },
   });
 };
