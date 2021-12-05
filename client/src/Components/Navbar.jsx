@@ -16,7 +16,7 @@ const Navbar = (props) => {
   return (
     <div className="navbar">
       <h1 style={{ textTransform: "uppercase" }}>
-        <span style={{ color: "red" }}>Fitness</span> Scheduler{" "}
+        <span style={{ color: "red" }}>Stay</span> Fit{" "}
       </h1>
       <div className="links">
         <Link exact to="/">
