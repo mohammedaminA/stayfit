@@ -9,9 +9,7 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 
-app.get("/login", (req, res) => {
-  res.status(200).render("login");
-});
+
 
 app.use(helmet());
 
